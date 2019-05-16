@@ -76,10 +76,12 @@ public class DingdingServiceImpl implements DingdingService {
 
     @Override
     public void success() {
-        String pic = "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-check-icon.png";
-        String title = String.format("%s%s构建成功", build.getProject().getDisplayName(), build.getDisplayName());
-        String content = String.format("项目[%s%s]构建成功, summary:%s, duration:%s", build.getProject().getDisplayName(), build.getDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
 
+        String pic = "http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/sign-check-icon.png";
+//        String title = String.format("%s%s构建成功", build.getProject().getDisplayName(), build.getDisplayName());
+        String title = String.format("%s构建成功", build.getFullDisplayName());
+//        String content = String.format("项目[%s%s]构建成功, summary:%s, duration:%s", build.getProject().getDisplayName(), build.getDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
+        String content = String.format("项目[%s]构建成功, summary:%s, duration:%s",  build.getFullDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
         String link = getBuildUrl();
         logger.info(link);
         if (onSuccess) {
@@ -91,9 +93,10 @@ public class DingdingServiceImpl implements DingdingService {
     @Override
     public void failed() {
         String pic = "http://www.iconsdb.com/icons/preview/soylent-red/x-mark-3-xxl.png";
-        String title = String.format("%s%s构建失败", build.getProject().getDisplayName(), build.getDisplayName());
-        String content = String.format("项目[%s%s]构建失败, summary:%s, duration:%s", build.getProject().getDisplayName(), build.getDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
-
+        //        String title = String.format("%s%s构建成功", build.getProject().getDisplayName(), build.getDisplayName());
+        String title = String.format("%s构建失败", build.getFullDisplayName());
+//        String content = String.format("项目[%s%s]构建成功, summary:%s, duration:%s", build.getProject().getDisplayName(), build.getDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
+        String content = String.format("项目[%s]构建失败, summary:%s, duration:%s",  build.getFullDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
         String link = getBuildUrl();
         logger.info(link);
         if (onFailed) {
@@ -105,9 +108,10 @@ public class DingdingServiceImpl implements DingdingService {
     @Override
     public void abort() {
         String pic = "http://www.iconsdb.com/icons/preview/soylent-red/x-mark-3-xxl.png";
-        String title = String.format("%s%s构建中断", build.getProject().getDisplayName(), build.getDisplayName());
-        String content = String.format("项目[%s%s]构建中断, summary:%s, duration:%s", build.getProject().getDisplayName(), build.getDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
-
+        //        String title = String.format("%s%s构建成功", build.getProject().getDisplayName(), build.getDisplayName());
+        String title = String.format("%s构建中断", build.getFullDisplayName());
+//        String content = String.format("项目[%s%s]构建成功, summary:%s, duration:%s", build.getProject().getDisplayName(), build.getDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
+        String content = String.format("项目[%s]构建中断, summary:%s, duration:%s",  build.getFullDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
         String link = getBuildUrl();
         logger.info(link);
         if (onAbort) {
