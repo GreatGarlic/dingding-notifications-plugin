@@ -55,8 +55,10 @@ public class DingdingServiceImpl implements DingdingService {
     @Override
     public void start() {
         String pic = "http://icon-park.com/imagefiles/loading7_gray.gif";
-        String title = String.format("%s%s开始构建", build.getProject().getDisplayName(), build.getDisplayName());
-        String content = String.format("项目[%s%s]开始构建", build.getProject().getDisplayName(), build.getDisplayName());
+        //        String title = String.format("%s%s构建成功", build.getProject().getDisplayName(), build.getDisplayName());
+        String title = String.format("%s开始构建", build.getFullDisplayName());
+//        String content = String.format("项目[%s%s]构建成功, summary:%s, duration:%s", build.getProject().getDisplayName(), build.getDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
+        String content = String.format("项目[%s]开始构建, summary:%s, duration:%s",  build.getFullDisplayName(), build.getBuildStatusSummary().message, build.getDurationString());
 
         String link = getBuildUrl();
         if (onStart) {
